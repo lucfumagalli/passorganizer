@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply font-inter;
+    background-color: #f5f5f5;
+}
+
+.app {
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+
+/* Tailwind Styles */
+
+.black_btn{
+  @apply rounded-full border border-black bg-black text-white h-12 px-5 transition-all hover:bg-white hover:text-black hover:border-primary-green flex text-center items-center;
+}
+
+.outline_btn {
+  @apply rounded-full border border-black bg-transparent h-12 px-5 text-black transition-all hover:bg-black hover:text-white flex text-center items-center;
+}
+
+.login_btn{
+  @apply rounded-full border border-primary-green bg-transparent h-12 px-5 gap-3 text-black transition-all hover:bg-primary-green hover:text-white
+}
+
+.head_text {
+  @apply mt-5 text-2xl font-bold text-black sm:text-3xl;
+}
+
+.highlighted{
+  @apply text-5xl font-black
+}
+
+.green_gradient {
+  @apply bg-gradient-to-r from-primary-green to-black bg-clip-text text-transparent;
+}
+.green_gradient_nt {
+  @apply bg-gradient-to-r from-primary-green to-black;
+}
+
+.desc {
+  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-xl;
+}
+
+.search_input {
+  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-inter pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+}
+
+.copy_btn {
+  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+}
+
+.glassmorphism {
+  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur;
+}
+
+.glassmorphism h1{
+  @apply px-5 py-2;
+}
+
+.card-item-title {
+  @apply text-xl font-bold;
+}
+.card-item-value {
+  @apply text-lg font-normal text-gray-600 pl-3;
+}
+/* Form Component */
+.form_textarea {
+  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+}
+
+.form_input {
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+}
+
+/* Nav Component */
+.logo_text {
+  @apply max-sm:hidden font-inter font-semibold text-lg text-black tracking-wide;
+}
+
+.dropdown {
+  @apply absolute right-6 top-28 mt-3 p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end z-50;
+}
+
+.dropdown_link_black {
+  @apply text-sm rounded-full border border-black bg-black text-white h-8 px-3 transition-all hover:bg-white hover:text-black hover:border-primary-green flex text-center items-center;
+}
+
+
