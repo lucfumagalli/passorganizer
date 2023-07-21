@@ -37,6 +37,7 @@ const page = () => {
 
     return (
         <Form
+            text="Add password"
             card={card}
             setCard={setCard}
             submitting={submitting}

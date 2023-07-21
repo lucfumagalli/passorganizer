@@ -3,10 +3,12 @@ import { useSession } from "next-auth/react";
 import { useEffect,useState } from "react";
 import ListProviders from "@components/ListProviders";
 import PasswordList from "@components/PasswordList";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
   const { data: session } = useSession();
   const [myPassword, setMyPassword] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPasswords = async () => {
@@ -15,9 +17,33 @@ const Home = () => {
       setMyPassword(data);
     };
 
-    if (session?.user.id) fetchPasswords();
+  if (session?.user.id) fetchPasswords();
     console.log()
   }, [session?.user.id]);
+
+  const handleEdit = async (psw) => {
+    router.push(`/update-password?id=${psw._id}`);
+  }
+
+  const handleDelete = async (psw) => {
+    const hasConfirmed = confirm(
+      "Are you sure you want to delete this password?"
+    );
+
+    if (hasConfirmed) {
+      try {
+        await fetch(`/api/password/${psw._id.toString()}`, {
+          method: "DELETE",
+        });
+
+        const filteredPsw = myPassword.filter((item) => item._id !== psw._id);
+
+        setMyPassword(filteredPsw);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
 
   if(!session?.user){
     return (
@@ -27,7 +53,7 @@ const Home = () => {
             <br />
             <span className='highlighted green_gradient text-center'>PASSORGANIZER</span>
           </h1>
-          <p className="desc text-center mx-auto">Please register to insert your first password or log in to see your password</p>
+          <p className="desc text-center mx-auto">Please log in to add your first password or to see yours</p>
           <ListProviders/>
         </section>
     );
@@ -40,7 +66,9 @@ const Home = () => {
         <span className='highlighted green_gradient text-center'>PASSWORD</span>
       </h1>
       <PasswordList
-        data={myPassword} 
+        data={myPassword}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
       />
     </section>
   );

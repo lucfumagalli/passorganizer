@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Form = ({ card, setCard, submitting, handleSubmit }) => {
+const Form = ({ text, card, setCard, submitting, handleSubmit }) => {
     return (
         <section className="w-full max-w-full flex flex-ccol">
             <form 
@@ -56,7 +56,7 @@ const Form = ({ card, setCard, submitting, handleSubmit }) => {
                         disabled={submitting}
                         className='green_gradient_nt h-12 px-5 ml-3 rounded-full text-white'
                     >
-                        {submitting ? "Adding password..." : "Add Password"}
+                        {text == "Add password" && submitting ? "Adding password..." : text}
                     </button>
                 </div>
             </form>
