@@ -3,6 +3,7 @@ import Form from "@components/Form";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { encrypt } from "@utils/crypto";
 
 const page = () => {
     const router = useRouter();
@@ -15,6 +16,10 @@ const page = () => {
         e.preventDefault();
         setSubmitting(true);
         try {
+            card.siteUrl = encrypt(card.siteUrl).encryptedData;
+            card.email = encrypt(card.email).encryptedData;
+            card.password = encrypt(card.password).encryptedData;
+
             const response = await fetch("/api/password/new", {
                 method: "POST",
                 body: JSON.stringify({

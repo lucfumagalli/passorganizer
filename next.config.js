@@ -12,6 +12,7 @@ const nextConfig = {
       ...config.experiments,
       topLevelAwait: true,
     }
+    config.externals = [...config.externals, 'bcrypt'];
     return config
   }
 }
