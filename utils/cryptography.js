@@ -1,13 +1,11 @@
-// cryptoUtils.js
 import CryptoJS from 'crypto-js';
 
-const encrypt = async (card) => {
+const encrypt = async (card, secretKey) => {
     const encryptedSubitems = {};
-    const secretKey = process.env.SECRET_KEY;
 
     for (const key in card) {
         if (card.hasOwnProperty(key)) {
-            const encryptedValue = CryptoJS.AES.encrypt(card[key], "inutile").toString();
+            const encryptedValue = CryptoJS.AES.encrypt(card[key], secretKey).toString();
             encryptedSubitems[key] = encryptedValue;
         }
     }
@@ -15,10 +13,19 @@ const encrypt = async (card) => {
     return encryptedSubitems;
 };
 
-const decrypt = (ciphertext) => {
-    const bytes = CryptoJS.AES.decrypt(ciphertext, "inutile");
-    const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
-    return decryptedText;
+const decrypt = async (cipherCard, secretKey) => {
+    const decryptedCard = cipherCard.map((item) => {
+        const updatedItem = {
+            ...item,
+            siteUrl: CryptoJS.AES.decrypt(item.siteUrl, secretKey).toString(CryptoJS.enc.Utf8),
+            email: CryptoJS.AES.decrypt(item.email, secretKey).toString(CryptoJS.enc.Utf8),
+            password: CryptoJS.AES.decrypt(item.password, secretKey).toString(CryptoJS.enc.Utf8),
+        };
+        console.log(updatedItem);
+        return updatedItem;
+    })
+
+    return decryptedCard;
 };
 
 export { encrypt, decrypt };

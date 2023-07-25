@@ -16,14 +16,13 @@ const page = () => {
         e.preventDefault();
         setSubmitting(true);
         try {
-            const cipherCard = await encrypt(card);
             const response = await fetch("/api/password/new", {
                 method: "POST",
                 body: JSON.stringify({
                     userId: session?.user.id,
-                    siteUrl: cipherCard.siteUrl, 
-                    email: cipherCard.email, 
-                    password: cipherCard.password
+                    siteUrl: card.siteUrl, 
+                    email: card.email, 
+                    password: card.password
                 })
             });
             

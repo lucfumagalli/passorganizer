@@ -22,7 +22,7 @@ const Home = () => {
   }, [session?.user.id]);
 
   const handleEdit = async (psw) => {
-    router.push(`/update-password?id=${psw._id}`);
+    router.push(`/update-password?id=${psw._doc._id}`);
   }
 
   const handleDelete = async (psw) => {
@@ -60,7 +60,7 @@ const Home = () => {
   }
   return (
     <section className='w-full flex-center flex-col'>
-      <h1 className='head_text text-center mb-4'>
+      <h1 className='head_text text-center mb-7'>
         Search your
         <br />
         <span className='highlighted green_gradient text-center'>PASSWORD</span>
