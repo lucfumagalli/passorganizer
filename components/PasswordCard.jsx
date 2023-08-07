@@ -20,7 +20,7 @@ const PasswordCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div className="w-full flex flex-col glassmorphism">
       <div className="flex justify-between bg-gradient-to-r from-primary-green to-black rounded-t-xl p-3">
-        <p className="text-2xl font-bold flex text-center text-white">{post.siteUrl}</p>
+        <p className="text-2xl max-sm:text-xl font-bold flex text-center text-white">{post.siteUrl}</p>
         <div className="flex flex-row gap-2">
           <div className='copy_btn' onClick={handleEdit}>
             <Image
@@ -41,8 +41,8 @@ const PasswordCard = ({ post, handleEdit, handleDelete }) => {
         </div>
       </div>
       
-      <div className="flex flex-row justify-between  p-3">
-        <h1 className="card-item-title">Email:<span className="card-item-value">{post.email}</span></h1>
+      <div className="flex flex-row justify-between p-3 snap-x">
+        <h1 className="card-item-title max-sm:text-base">Email:<span className="card-item-value">{post.email}</span></h1>
         <div className='copy_btn' onClick={handleCopyEmail}>
           <Image
             src={copiedEmail === post.email ? '/assets/icons/tick.svg' : 'assets/icons/copy.svg'}
@@ -52,8 +52,8 @@ const PasswordCard = ({ post, handleEdit, handleDelete }) => {
             />
         </div>
       </div>
-      <div className="flex flex-row justify-between pb-3 px-3">
-        <h1 className="card-item-title">Password:<span className="card-item-value">{post.password}</span></h1>
+      <div className="flex flex-row justify-between pb-3 px-3 snap-x">
+        <h1 className="card-item-title max-sm:text-base">Password:<span className="card-item-value">{post.password}</span></h1>
         <div className='copy_btn' onClick={handleCopyPassword}>
           <Image
             src={copiedPassword === post.password ? '/assets/icons/tick.svg' : 'assets/icons/copy.svg'}
