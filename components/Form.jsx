@@ -46,7 +46,7 @@ const Form = ({ text, card, setCard, submitting, handleSubmit }) => {
                         required
                     />
                 </label>
-                <div className='flex items-center justify-end mx-3 mb-5 gap-4'>
+                <div className='flex max-sm:flex-col items-center justify-end mx-3 mb-5 gap-4'>
                     <Link href='/' className='text-gray-500 text-sm'>
                         Cancel
                     </Link>

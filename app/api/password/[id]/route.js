@@ -28,6 +28,7 @@ export const PATCH = async(request, { params }) => {
         existingPsw.siteUrl = cipherData.siteUrl;
         existingPsw.email = cipherData.email;
         existingPsw.password = cipherData.password;
+        existingPsw.save();
 
         return new Response("Password updated",{ status: 200 });
     } catch (error) {
