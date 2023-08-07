@@ -18,7 +18,6 @@ const Home = () => {
     };
 
   if (session?.user.id) fetchPasswords();
-    console.log()
   }, [session?.user.id]);
 
   const handleEdit = async (psw) => {
@@ -29,10 +28,9 @@ const Home = () => {
     const hasConfirmed = confirm(
       "Are you sure you want to delete this password?"
     );
-
     if (hasConfirmed) {
       try {
-        await fetch(`/api/password/${psw._id.toString()}`, {
+        await fetch(`/api/password/${psw._doc._id}`, {
           method: "DELETE",
         });
 

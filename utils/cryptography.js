@@ -21,7 +21,6 @@ const decrypt = async (cipherCard, secretKey) => {
             email: CryptoJS.AES.decrypt(item.email, secretKey).toString(CryptoJS.enc.Utf8),
             password: CryptoJS.AES.decrypt(item.password, secretKey).toString(CryptoJS.enc.Utf8),
         };
-        console.log(updatedItem);
         return updatedItem;
     })
 

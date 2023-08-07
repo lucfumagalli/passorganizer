@@ -18,9 +18,9 @@ const UpdatePassword = () => {
       const response = await fetch(`/api/password/${pswId}`);
       const data = await response.json();
       setCard({
-        siteUrl: data.siteUrl,
-        email: data.email,
-        password: data.password
+        siteUrl: data[0].siteUrl,
+        email: data[0].email,
+        password: data[0].password
       });
     };
 
