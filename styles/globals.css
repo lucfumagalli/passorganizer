@@ -86,4 +86,8 @@ body{
   @apply text-sm rounded-full border border-black bg-black text-white h-8 px-3 transition-all hover:bg-white hover:text-black hover:border-primary-green flex text-center items-center;
 }
 
+.not-show{
+  text-security:disc;
+  -webkit-text-security: disc;
+}
 
